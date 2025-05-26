@@ -1,0 +1,22 @@
+* {
+    box-sizing: unset;
+}
+
+body {
+    background-color: dimgray;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+    height: 100vh;           /* full viewport height */
+    flex-direction: column;  /* Make the child component change flex direction */
+}
+
+.main-content > button {
+    padding: 1em 2em;
+    font-size: 1.2em;
+    margin: 1em;
+    width: 200px;
+}

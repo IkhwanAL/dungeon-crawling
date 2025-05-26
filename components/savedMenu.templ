@@ -1,0 +1,20 @@
+package components
+
+templ SavedMenu() {
+    <div class="main-content" id="main-content">
+        <div>
+            <h2>Saved Game</h2>
+        </div>
+        <ul>
+            <li>Save 1</li>
+            <li>Save 2</li>
+            <li>Save 3</li>
+        </ul>
+        <button 
+            hx-get="/main-menu" 
+            hx-target="#main-content" 
+            hx-swap="outerHTML">
+            Back
+        </button>
+    </div>
+}

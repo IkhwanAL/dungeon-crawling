@@ -1,0 +1,13 @@
+package components
+
+templ MainMenu() {
+    <div class="main-content" id="main-content">
+        <h1>Main Menu</h1>
+        <button 
+            hx-get="/saved-menu" 
+            hx-target="#main-content" 
+            hx-swap="outerHTML">
+            Load Game
+        </button>
+    </div>
+}
