@@ -1,9 +1,27 @@
 package components
 
-templ GameLayout() {
-    <div>
-        <div>
-            Game Play
+templ GameLayout(grid [][]rune) {
+    <div class="game-scene" id="game-scene">
+        <div class="main-scene" id="main-scene">
+            // What Base Should I Use Table or Grid or Should i use Canvas??
+            <div class="dungeon">
+                for _, row := range grid {
+                    for _, _ = range row {
+                        <div class="tile">#</div>
+                    }
+                }
+            </div>
+        </div>
+        <div id="game-option">
+            <button>
+                Pause Game
+            </button>
+            <button>
+                Save Game
+            </button>
+            <button hx-get="/main-menu" hx-target="#game-scene" hx-swap="outerHTML" hx-push-url="true">
+                Go Back
+            </button>
         </div>
     </div>
 }

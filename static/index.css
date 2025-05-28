@@ -35,3 +35,29 @@ body {
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.game-scene {
+    display: flex;
+    align-items: center;     /* vertical */
+    height: 100vh;           /* full viewport height */
+    flex-direction: column;  /* Make the child component change flex direction */
+}
+
+.main-scene {
+    border: 1px solid white;
+    width: 95%;
+    height: 85vh;
+    margin-bottom: 2em;
+}
+
+.dungeon {
+    display: grid;
+    grid-template-columns: repeat(30, 10px); /* Adjust to dungeon width */
+    grid-template-rows: auto;
+    gap: 0px;
+}
+
+.tile {
+  font-family: monospace;
+  font-size: 20px;
+}
