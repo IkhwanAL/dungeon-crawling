@@ -8,7 +8,7 @@ package components
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func SavedMenu() templ.Component {
+func GameLayout() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,7 +29,7 @@ func SavedMenu() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"main-content\" id=\"main-content\" hx-boost=\"true\"><div><h2>Saved Game</h2></div><div id=\"saved-list\"><div class=\"save-box\">Saved 1</div><div class=\"save-box\">Saved 2</div><div class=\"save-box\">Saved 3</div><div class=\"save-box\">Saved 4</div></div><button hx-get=\"/main-menu\" hx-target=\"#main-content\" hx-swap=\"outerHTML\">Back</button></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div><div>Game Play</div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

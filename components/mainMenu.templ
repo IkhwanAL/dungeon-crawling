@@ -4,10 +4,28 @@ templ MainMenu() {
     <div class="main-content" id="main-content">
         <h1>Main Menu</h1>
         <button 
+            hx-get="/game" 
+            hx-target="#main-content" 
+            hx-swap="outerHTML"
+            hx-push-url="true"
+            >
+            New Game
+        </button>
+        <button 
             hx-get="/saved-menu" 
             hx-target="#main-content" 
-            hx-swap="outerHTML">
+            hx-swap="outerHTML"
+            hx-push-url="true"
+            >
             Load Game
+        </button>
+        <button 
+            hx-get="/saved-menu" 
+            hx-target="#main-content" 
+            hx-swap="outerHTML"
+            hx-push-url="true"
+            >
+            Exit
         </button>
     </div>
 }

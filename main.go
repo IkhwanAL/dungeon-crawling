@@ -22,5 +22,9 @@ func main() {
 		components.BaseLayout(components.SavedMenu()).Render(r.Context(), w)
 	})
 
+	http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
+		components.BaseLayout(components.GameLayout()).Render(r.Context(), w)
+	})
+
 	http.ListenAndServe(":8080", nil)
 }

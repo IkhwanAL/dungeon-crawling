@@ -20,3 +20,18 @@ body {
     margin: 1em;
     width: 200px;
 }
+
+#saved-list > .save-box {
+    font-size: 18px;
+    color: white;
+    border: 1px solid white;
+    margin: 1em 0 1em 0;
+    padding: 1em;
+    width: 600px;
+    transition: transform 0.3s ease;
+}
+
+.save-box:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
