@@ -29,7 +29,7 @@ func BaseLayout(content templ.Component) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<html><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><title>Turn Based Games</title><meta name=\"description\" content=\"\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"/static/index.css\"><script src=\"https://unpkg.com/htmx.org@2.0.4\"></script></head><body>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<html><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><title>Turn Based Games</title><meta name=\"description\" content=\"\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"/static/index.css\"><script src=\"/static/canvas.js\" type=\"text/javascript\"></script><script src=\"https://unpkg.com/htmx.org@2.0.4\"></script><script>\r\n                window.onload = function () {\r\n                    document.body.addEventListener(\"htmx:load\", function (ev) {\r\n                        if (document.getElementById(\"scene\")) {\r\n                            drawScene()\r\n                        }\r\n                        console.log(\"HTMX TRIGGER LOAD\")\r\n                    })\r\n                }\r\n            </script></head><body>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

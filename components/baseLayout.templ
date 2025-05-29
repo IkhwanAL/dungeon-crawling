@@ -9,7 +9,18 @@ templ BaseLayout(content templ.Component) {
             <meta name="description" content="">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="/static/index.css">
+            <script src="/static/canvas.js" type="text/javascript"></script>
             <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+            <script>
+                window.onload = function () {
+                    document.body.addEventListener("htmx:load", function (ev) {
+                        if (document.getElementById("scene")) {
+                            drawScene()
+                        }
+                        console.log("HTMX TRIGGER LOAD")
+                    })
+                }
+            </script>
         </head>
         <body>
             @content

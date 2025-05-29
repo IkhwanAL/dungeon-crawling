@@ -29,19 +29,7 @@ func GameLayout(grid [][]rune) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"game-scene\" id=\"game-scene\"><div class=\"main-scene\" id=\"main-scene\"><div class=\"dungeon\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		for _, row := range grid {
-			for _, _ = range row {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"tile\">#</div>")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-			}
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div><div id=\"game-option\"><button>Pause Game</button> <button>Save Game</button> <button hx-get=\"/main-menu\" hx-target=\"#game-scene\" hx-swap=\"outerHTML\" hx-push-url=\"true\">Go Back</button></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"game-scene\" id=\"game-scene\"><div class=\"main-scene\" id=\"main-scene\"><canvas id=\"scene\" width=\"1287\" height=\"1024\"></canvas></div><div id=\"game-option\"><button>Pause Game</button> <button>Save Game</button> <button hx-get=\"/main-menu\" hx-target=\"#game-scene\" hx-swap=\"outerHTML\" hx-push-url=\"true\">Go Back</button></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
