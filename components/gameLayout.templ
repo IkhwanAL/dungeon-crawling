@@ -3,7 +3,7 @@ package components
 templ GameLayout(grid [][]rune) {
     <div class="game-scene" id="game-scene">
         <div class="main-scene" id="main-scene">
-            <canvas id="scene" width="1287" height="1024"></canvas>
+            <canvas id="scene"></canvas>
         </div>
         <div id="game-option">
             <button>
@@ -12,8 +12,9 @@ templ GameLayout(grid [][]rune) {
             <button>
                 Save Game
             </button>
+            // TODO Need to Add Confirm 
             <button hx-get="/main-menu" hx-target="#game-scene" hx-swap="outerHTML" hx-push-url="true">
-                Go Back
+                Back to Main Menu
             </button>
         </div>
     </div>
