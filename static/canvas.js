@@ -64,18 +64,20 @@ function binarySpacePartition(ctx, width, height) {
 
     generateRoom(ctx, binaryRoom.left, 350 * 350)
     generateRoom(ctx, binaryRoom.right, 350 * 350)
+
+    console.log(binaryRoom)
 }
 
 /**
  * TODO Create Separate Left Node Right Node For Each Direction
  * @param {CanvasRenderingContext2D} ctx 
  * @param {BNode} binaryRoom
- * @param {number} maxSize
+ * @param {number} maxSize in Pixel Size
  * @returns 
  */
 function generateRoom(ctx, binaryRoom, maxSize) {
     const area = (binaryRoom.data.maxX - binaryRoom.data.minX) * (binaryRoom.data.maxY - binaryRoom.data.minY)
-    console.log(binaryRoom, area)
+  
     if (maxSize >= area) {
         return
     }
@@ -86,7 +88,7 @@ function generateRoom(ctx, binaryRoom, maxSize) {
 
     if (split == "vertical") {
         const randomStartX = Math.floor(
-            (Math.random() * (binaryRoom.data.maxX - binaryRoom.data.minX)) + binaryRoom.data.minX
+            (Math.random() * ((binaryRoom.data.maxX - 200) - (binaryRoom.data.minX + 200))) + (binaryRoom.data.minX + 200)
         )
         const randomStartY = binaryRoom.data.minY
 
@@ -114,7 +116,7 @@ function generateRoom(ctx, binaryRoom, maxSize) {
     } else {
         const randomStartX = binaryRoom.data.minX
         const randomStartY = Math.floor(
-            (Math.random() * (binaryRoom.data.maxY - binaryRoom.data.minY)) + binaryRoom.data.minY
+            (Math.random() * ((binaryRoom.data.maxY - 100) - (binaryRoom.data.minY + 100))) + (binaryRoom.data.minY + 100)
         )
 
         const randomX = binaryRoom.data.maxX
