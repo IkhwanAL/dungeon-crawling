@@ -33,83 +33,128 @@ function drawScene() {
  * @returns 
  */
 function binarySpacePartition(ctx, width, height) {
-    const split = chooseRandomSplitting()
-
-    console.log(split)
-
-    // if (split == "vertical") {
-    //     ctx.beginPath()
-    //     ctx.moveTo(0, height / 2)
-    //     ctx.lineTo(width, height / 2)
-    //     ctx.stroke()
-    // } else {
     ctx.beginPath()
     ctx.moveTo(width / 2, 0)
     ctx.lineTo(width / 2, height)
     ctx.stroke()
-    // }
 
     let binaryRoom = new BNode({
-        minWidth: 0,
-        maxWidth: width / 2,
-        minHeight: 0,
-        maxHeight: height
+        minX: 0,
+        maxX: width / 2,
+        minY: 0,
+        maxY: height
     })
 
     const leftNode = new BNode({
-        minWidth: 0,
-        maxWidth: width / 2,
-        minHeight: 0,
-        maxHeight: height
+        minX: 0,
+        maxX: width / 2,
+        minY: 0,
+        maxY: height
     })
 
     const rightNode = new BNode({
-        minWidth: width / 2,
-        maxWidth: width,
-        minHeight: 0,
-        maxHeight: height
+        minX: width / 2,
+        maxX: width,
+        minY: 0,
+        maxY: height
     })
 
     binaryRoom.left = leftNode
     binaryRoom.right = rightNode
 
-    generateRoom(ctx, binaryRoom.left, 4)
+    generateRoom(ctx, binaryRoom.left, 350 * 350)
+    generateRoom(ctx, binaryRoom.right, 350 * 350)
 }
 
 /**
- * 
+ * TODO Create Separate Left Node Right Node For Each Direction
  * @param {CanvasRenderingContext2D} ctx 
  * @param {BNode} binaryRoom
- * @param {number} maxRecursive 
+ * @param {number} maxSize
  * @returns 
  */
-function generateRoom(ctx, binaryRoom, maxRecursive) {
-    let max = maxRecursive + 1
-    if (max == 4) {
+function generateRoom(ctx, binaryRoom, maxSize) {
+    const area = (binaryRoom.data.maxX - binaryRoom.data.minX) * (binaryRoom.data.maxY - binaryRoom.data.minY)
+    console.log(binaryRoom, area)
+    if (maxSize >= area) {
         return
     }
 
     const split = chooseRandomSplitting()
+    const leftNode = new BNode()
+    const rightNode = new BNode()
 
     if (split == "vertical") {
-        const randomStartX = Math.random() * binaryRoom.data.minWidth
-        const randomStartY = Math.random() * binaryRoom.data.maxHeight
+        const randomStartX = Math.floor(
+            (Math.random() * (binaryRoom.data.maxX - binaryRoom.data.minX)) + binaryRoom.data.minX
+        )
+        const randomStartY = binaryRoom.data.minY
 
-        const randomX = binaryRoom.data.maxWidth
-        const randomY = Math.random() * binaryRoom.data.maxHeight
-        console.log(randomStartX, randomStartY, randomX, randomY)
+        const randomX = randomStartX
+        const randomY = binaryRoom.data.maxY
+        // console.log(randomStartX, randomStartY, randomX, randomY, "VER")
         ctx.beginPath()
         ctx.moveTo(randomStartX, randomStartY)
         ctx.lineTo(randomX, randomY)
         ctx.stroke()
+
+        leftNode.data = {
+            minX: binaryRoom.data.minX,
+            minY: binaryRoom.data.minY,
+            maxX: randomStartX,
+            maxY: randomY,
+        }
+        rightNode.data = {
+            minX: randomStartX,
+            maxX: binaryRoom.data.maxX,
+
+            minY: randomStartY,
+            maxY: randomY
+        }
+    } else {
+        const randomStartX = binaryRoom.data.minX
+        const randomStartY = Math.floor(
+            (Math.random() * (binaryRoom.data.maxY - binaryRoom.data.minY)) + binaryRoom.data.minY
+        )
+
+        const randomX = binaryRoom.data.maxX
+        const randomY = randomStartY
+        // console.log(randomStartX, randomStartY, randomX, randomY, "HOZ")
+        ctx.beginPath()
+        ctx.moveTo(randomStartX, randomStartY)
+        ctx.lineTo(randomX, randomY)
+        ctx.stroke()     
+
+        leftNode.data = {
+            maxY: randomStartY,
+            maxX: randomX,
+            
+            minX: randomStartX,
+            minY: binaryRoom.data.minY
+        }
+
+        rightNode.data = {
+            maxX: binaryRoom.data.maxX,
+            maxY: binaryRoom.data.maxY,
+            
+            minY: randomStartY,
+            minX: randomStartX, 
+        }
     }
+
+    binaryRoom.left = leftNode
+    binaryRoom.right = rightNode
+
+    generateRoom(ctx, binaryRoom.left, maxSize)
+    generateRoom(ctx, binaryRoom.right, maxSize)
 }
 
 function chooseRandomSplitting() {
     const splits = ["horizontal", "vertical"]
     
-    // return splits[Math.floor(Math.random() * splits.length)]
-    return "vertical"
+    return splits[Math.floor(Math.random() * splits.length)]
+    // return "vertical"
+    // return "horizontal"
 }
 
 function chooseColorRandom() {
