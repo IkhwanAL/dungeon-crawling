@@ -5,3 +5,6 @@ A Game (Dungeon Crawler) Using HTMX And Canvas To Manipulate Pixel and Golang as
 ## Motivation
 
 To Plan is To Learn CSS and Some Syntactic Sugar and maybe learn some Canvas and of course learn some golang + SQLite
+
+Status On Hold
+Need to find the logic to generate road
